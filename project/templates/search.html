@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if posts %}
+        {% for post in posts %}
+        <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+            <div class="media-body">
+              <div class="article-metadata">
+                <a href="{{ url_for('user_posts', username=post.author.username) }}"><h5>{{ post.author.username }}</h5></a>
+                <small class="text-muted">Posted on {{ post.date_posted.strftime('%d-%m-%Y') }}</small>
+              </div>
+              <div class="item-show">
+                <h2><span><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></span></h2>
+                {% if post.type=='1' %}
+                    <a href="{{ url_for('post', post_id=post.id) }}"><button class="btn2 btn-primary">DONATION</button></a>
+                {% else %}
+                    <a href="{{ url_for('post', post_id=post.id) }}"><button class="btn2 btn-primary">REQUEST</button></a>
+                {% endif %}
+              </div>
+              <p class="article-content">Contact at : +91{{ post.contact }}</p>
+            </div>
+        </article>
+        {% endfor %}
+    {% else %}
+        <div data-toggle="modal" data-target="#SearchModal"></div>
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                <p>Sorry! Searched item not found!</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ url_for('home') }}" class="btn btn-primary">Go Back</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

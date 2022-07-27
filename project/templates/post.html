@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2 links" href="{{ url_for('user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+        <br>
+        {% if post.type=='1' %}
+        <small class="text-muted"><b>Donated</b> On {{ post.date_posted.strftime('%d-%m-%Y') }}</small>
+        {% else %}
+        <small class="text-muted"><b>Requested</b> On {{ post.date_posted.strftime('%d-%m-%Y') }}</small>
+        {% endif %}
+        {% if post.author == current_user %}
+        <div>
+          <a class="btn btn-secondary" href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
+          <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+        </div>
+      {% endif %}
+    </div>
+      <h2 class="article-title">{{ post.title }}</h2>
+      <h6 class="article-d"><i class="fa fa-circle" style="font-size:10px;color:#ee8f84"></i>&nbsp;&nbsp;DESCRIPTION:</h6>
+      <pre>{{ post.content }}</pre>
+      <h6 class="article-d"><i class="fa fa-circle" style="font-size:10px;color:#ee8f84"></i>&nbsp;&nbsp;Availabile till:</h6>
+      <p class="article-content-p">{{ post.expiry_date.strftime('%d-%m-%Y') }}</p>
+      <h6 class="article-d"><i class="fa fa-circle" style="font-size:10px;color:#ee8f84"></i>&nbsp;&nbsp;Location:</h6>
+      <p class="article-content-p">{{ post.location }}</p>
+      <h6 class="article-d"><i class="fa fa-circle" style="font-size:10px;color:#ee8f84"></i>&nbsp;&nbsp;Contact:</h6>
+      <p class="article-content-p">+91{{ post.contact }}</p>
+      {% if post.author != current_user %}
+        <div>
+          <a class="btn btn-secondary" href="{{ url_for('connect_post', post_id=post.id) }}">Notify</a>
+        </div>
+      {% endif %}
+    </div>
+  </article>
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <font color="black">Are you sure you want to delete?</font>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
+            <input class="btn" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

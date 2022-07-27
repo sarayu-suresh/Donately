@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+        <title>Donately</title>
+</head>
+<body class="landing-body">
+      <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel-m fixed-top  land">
+          <div class="container">
+      <div class ="header" align="self-center">
+            <a class="navbar-brand" href="/"><img width="200" height="60" src="{{ url_for('static',filename='profile_pics/logo2.png') }}"></a>
+        </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <!-- Navbar Right Side -->
+              <div class="navbar-nav ml-auto">
+                      <b><a class="nav-item nav-link btn" href="{{ url_for('login') }}">Login</a></b>
+                      <b><a class="nav-item nav-link btn" href="{{ url_for('register') }}">Sign Up</a></b>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div class="move1">
+                    <center>
+                        <img src="{{ url_for('static',filename='profile_pics/img1.png') }}">
+                    </center>
+                </div>
+                <div class="move2">
+                    <center>
+                        <p><i>"It's not how much we give, It's how much we put into giving"</i></p>
+                    </center>
+                </div>
+                <div class="move3">
+                    <center>
+                        <BR>
+                        <p>Donately is an online classified which assist in collecting the leftover food from hotels & restaurants and other useful items from donors. The donors can update the availability of an item so people can know about it.
+                            The receivers can request their need as well as search for if it is available.
+                            The app is free and made easy to use.                            
+                        </p>
+                    </center>
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-10">
+                <div class="move3">
+                    <center>
+                        <br>
+                        <h3 class="article-t-1">Have anything to DONATE or REQUEST?</h3>
+                        <b><a class="nav-item nav-link btn" href="{{ url_for('home') }}">Check</a></b>
+                    </center>
+                </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+        <br>
+        <br><br>
+      </main>
+      <footer>
+        <center>
+            @2022
+        </center>
+      </footer>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+
+    </body>
+</html>
