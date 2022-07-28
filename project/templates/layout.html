@@ -34,7 +34,11 @@
                   {{ form.hidden_tag() }}
                   <div class="form-group ">
                     <br>
-                    {{ form.types(class="filter me-2") }} &nbsp;
+                      <select id="types" name="types" class="filter">
+                        <option value="3">All</option>
+                        <option value="1">Donation</option>
+                        <option value="2">Request</option>
+                      </select>
                   </div>
                   <div>
                     <input class="form-control s me-2" type="search" placeholder="Search" aria-label="Search", name="item">
@@ -42,7 +46,6 @@
                   <div class="pull-right">
                     &nbsp;<button class="btn btn-info paginate" type="submit">go</button>
                   </div>
-                  
                 </form>
               </div>
               <!-- Navbar Right Side -->
